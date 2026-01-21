@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK HEBAT - WiFi Login</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            width: 350px;
+            text-align: center;
+        }
+
+        .logo-sekolah {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333333 ;  
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #1a237e;
+            box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1);
+        }
+
+        
+        .btn-login {
+            background-color: #1a237e;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: #283593;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        .login-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #1a237e;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 0 5px 5px 0;
+            text-align: left;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .login-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <img src="https://img.icons8.com/color/96/wifi-router.png" alt="Logo WiFi" class="logo-sekolah">
+        
+        <h2>LOGIN WIFI SISWA SMK HEBAT</h2>
+
+        <form name="loginForm" onsubmit="return validasiLogin()">
+            <div class="input-group">
+                <label for="username">NISN / Username</label>
+                <input type="text" id="username" name="username" placeholder="Masukkan NISN Anda">
+            </div>
+
+           
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan Password Anda">
+            </div>
+
+           
+            <button type="submit" class="btn-login">LOGIN SEKARANG</button>
+
+        </form>
+
+        <div class="login-info">
+            <p><strong>Perhatian:</strong> Hanya untuk siswa SMK HEBAT</p>
+            <p>Gunakan username dan password yang diberikan dan pastikan tidak salah dalam mengisinya</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2024 Tim IT Support SMK HEBAT. <br>
+            Jaringan dipantau oleh Server Mikrotik.
+        </div>
+    </div>
+
+    <script>
+        function validasiLogin() {
+            var user = document.getElementById("username").value;
+            var pass = document.getElementById("password").value; 
+
+            // PERBAIKAN: Logika validasi yang benar
+            if (user == "") {
+                alert("Username wajib diisi!");
+                document.getElementById("username").focus();
+                return false;
+            } else if (pass == "") {
+                alert("Password wajib diisi!");
+                document.getElementById("password").focus();
+                return false;
+            } else {
+                // Simulasi login berhasil
+                alert("Login Berhasil! Anda sekarang terhubung ke jaringan wifi SMK HEBAT.");
+                
+                // Di sini biasanya akan ada proses login sebenarnya
+                // Contoh: window.location.href = "wifi-gateway.html";
+                
+                // Untuk simulasi, kita akan reset form setelah 2 detik
+                setTimeout(function() {
+                    document.getElementById("username").value = "";
+                    document.getElementById("password").value = "";
+                    document.getElementById("username").focus();
+                }, 2000);
+                
+                return true;
+            }
+        }
+    </script>
+
+</body>
+</html>
